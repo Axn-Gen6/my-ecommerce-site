@@ -194,7 +194,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="class-item d-flex align-items-center">
               <a href="single.html" class="class-item-thumbnail">
                 <img src="images/img_1.jpg" alt="Image">
@@ -230,41 +230,16 @@
                 <span>30 minutes</span>
               </div>
             </div>
-            
+
+          </div>
+          <div class="col-lg-4">
             <div class="class-item d-flex align-items-center">
               <a href="single.html" class="class-item-thumbnail">
-                <img src="images/img_4.jpg" alt="Image">
+                <img src="images/img_1.jpg" alt="Image">
               </a>
               <div class="class-item-text">
                 
                 <h2><a href="single.html">Fitness Class Name #4</a></h2>
-                <span>By Justin Daniel</span>,
-                <span>30 minutes</span>
-              </div>
-            </div>
-
-            <div class="class-item d-flex align-items-center">
-              <a href="single.html" class="class-item-thumbnail">
-                <img src="images/img_1.jpg" alt="Image">
-              </a>
-              <div class="class-item-text">
-                
-                <h2><a href="single.html">Fitness Class Name #5</a></h2>
-                <span>By Justin Daniel</span>,
-                <span>30 minutes</span>
-              </div>
-            </div>
-            
-           
-          </div>
-          <div class="col-lg-6">
-            <div class="class-item d-flex align-items-center">
-              <a href="single.html" class="class-item-thumbnail">
-                <img src="images/img_1.jpg" alt="Image">
-              </a>
-              <div class="class-item-text">
-                
-                <h2><a href="single.html">Fitness Class Name #1</a></h2>
                 <span>By Justin Daniel</span>,
                 <span>30 minutes</span>
               </div>
@@ -276,7 +251,7 @@
               </a>
               <div class="class-item-text">
                 
-                <h2><a href="single.html">Fitness Class Name #2</a></h2>
+                <h2><a href="single.html">Fitness Class Name #5</a></h2>
                 <span>By Justin Daniel</span>,
                 <span>30 minutes</span>
               </div>
@@ -288,36 +263,53 @@
               </a>
               <div class="class-item-text">
                 
-                <h2><a href="single.html">Fitness Class Name #3</a></h2>
+                <h2><a href="single.html">Fitness Class Name #6</a></h2>
                 <span>By Justin Daniel</span>,
                 <span>30 minutes</span>
               </div>
             </div>
             
-            <div class="class-item d-flex align-items-center">
-              <a href="single.html" class="class-item-thumbnail">
-                <img src="images/img_4.jpg" alt="Image">
-              </a>
-              <div class="class-item-text">
-                
-                <h2><a href="single.html">Fitness Class Name #4</a></h2>
-                <span>By Justin Daniel</span>,
-                <span>30 minutes</span>
-              </div>
-            </div>
-            
+          </div>
+          <div class="col-lg-4">
             <div class="class-item d-flex align-items-center">
               <a href="single.html" class="class-item-thumbnail">
                 <img src="images/img_1.jpg" alt="Image">
               </a>
               <div class="class-item-text">
                 
-                <h2><a href="single.html">Fitness Class Name #5</a></h2>
+                <h2><a href="single.html">Fitness Class Name #7</a></h2>
                 <span>By Justin Daniel</span>,
                 <span>30 minutes</span>
               </div>
             </div>
+            
+            <div class="class-item d-flex align-items-center">
+              <a href="single.html" class="class-item-thumbnail">
+                <img src="images/img_2.jpg" alt="Image">
+              </a>
+              <div class="class-item-text">
+                
+                <h2><a href="single.html">Fitness Class Name #8</a></h2>
+                <span>By Justin Daniel</span>,
+                <span>30 minutes</span>
+              </div>
+            </div>
+            
+            <div class="class-item d-flex align-items-center">
+              <a href="single.html" class="class-item-thumbnail">
+                <img src="images/img_3.jpg" alt="Image">
+              </a>
+              <div class="class-item-text">
+                
+                <h2><a href="single.html">Fitness Class Name #9
+                </a></h2>
+                <span>By Justin Daniel</span>,
+                <span>30 minutes</span>
+              </div>
+            </div>
+
           </div>
+          
         </div>
       </div>
     </div>
@@ -1571,6 +1563,59 @@
 
 
   <script src="js/main.js"></script>
+  <script>
+
+    loadDoc("./xml/class_sunday.xml", classXML);
+    
+
+    //loadDoc("url-2", myFunction2);
+
+    function loadDoc(url, cFunction) {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {cFunction(this);}
+      xhttp.open("GET", url);
+      xhttp.send();
+    }
+
+    function classXML(xmlData) {
+  var i;
+  var xmlDoc = xmlData.responseXML;
+  var class_list = xmlDoc.getElementsByTagName("class"); 
+  var html_text = ""; 
+  
+  for(i = 0; i < class_list.length; i++){ 
+        var single_page = class_list[i].getElementsByTagName("single-page")[0].childNodes[0].nodeValue;
+        var image = class_list[i].getElementsByTagName("image")[0].childNodes[0].nodeValue;
+        var time = class_list[i].getElementsByTagName("time")[0].childNodes[0].nodeValue;
+        var name = class_list[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+        var instructor = class_list[i].getElementsByTagName("instructor")[0].childNodes[0].nodeValue;
+        var duration = class_list[i].getElementsByTagName("duration")[0].childNodes[0].nodeValue;
+
+        html_text += '<div class="class-item d-flex align-items-center">' +
+               '<a href="'+single_page+'" class="class-item-thumbnail">' +
+                 '<img src="'+image+'" alt="Image">' +
+               '</a>' +
+               '<div class="class-item-text">' +
+                 '<span>'+time+'</span>' +
+                 '<h2><a href="'+single_page+'">'+name+'</a></h2>' +
+                 '<span>'+instructor+'</span>,' +
+                 '<span>'+duration+'</span>' +
+               '</div>' +
+             '</div>';
+      }
+      console.log(html_text);
+      document.getElementById("nav-sunday").children[0].children[0].innerHTML = html_text;
+
+    }
+    function myFunction2(xhttp) {
+      // action goes here
+    }    
+
+    window.onload = function(){
+      const Contact = document.getElementById("contact-head");
+      Contact.innerHTML = "WoooW  "
+    }
+  </script>
 
 </body>
 
