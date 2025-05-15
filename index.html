@@ -1534,7 +1534,6 @@
           </p>
             </div>
           </div>
-
         </div>
       </div>
     </footer>
@@ -1564,9 +1563,6 @@
 
   <script src="js/main.js"></script>
   <script>
-
-    loadDoc("./xml/class_sunday.xml", classXML);
-    
 
     //loadDoc("url-2", myFunction2);
 
@@ -1602,7 +1598,7 @@
                  '<span>'+duration+'</span>' +
                '</div>' +
              '</div>';
-      }
+      } 
       console.log(html_text);
       document.getElementById("nav-sunday").children[0].children[0].innerHTML = html_text;
 
@@ -1614,7 +1610,16 @@
     window.onload = function(){
       const Contact = document.getElementById("contact-head");
       Contact.innerHTML = "WoooW  "
-    }
+
+      loadDoc(" ./xml/class_sunday.xml" , classJSON);
+
+      loadDoc(" ./json/class_sunday.json" , classJSON);
+
+      loadSubject(" ./json/contact_subject.json.json");
+
+      
+    }     
+
   </script>
 
 </body>
